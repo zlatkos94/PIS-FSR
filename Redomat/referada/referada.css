@@ -1,0 +1,231 @@
+@charset "utf-8";
+@font-face { font-family: JuneBug; src: url('../digital.TTF'); } 
+	body{
+		background:url("../background.jpg") no-repeat fixed center;
+		background-size:cover;
+		text-align:center;
+		bgproperties: fixed;
+	}
+@media   (max-width: 399px){
+	.set{
+		width:12vw;
+		margin-top:1vh;
+		vertical-align:central;
+		
+	}
+	#txt, #txtlcd, #txtlcd3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	txtlcdsmall, txtlcdsmall2, txtlcdsmall3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	#txtlcd2{
+		font-family: JuneBug;
+		color:#090;
+	}
+	.statusbar{
+		background-color:rgba(255, 255, 255, 0.25);
+		width:95vw;
+		float:left;
+		text-align:left;
+		position: fixed;
+	}
+	.right,.left{
+		width:50%; 
+		position:absolute; 
+		background-color:rgba(255, 255, 255, 0.25);
+		height:10vh;
+	}
+	.right{
+		right:0;
+		text-align:right;
+		margin-left:20vw;
+	}
+	.left{
+		left:0;
+		text-align:left;
+	}
+	#buttons2{
+		background-color:#FFF;
+		display:none;
+	}
+	#table{
+		width:100%;
+		height:100%;
+		text-align:center;
+	}
+	#tablebar{
+		background-image:url(../table.png);
+		background-repeat: no-repeat;
+		background-size:cover;
+		height:6vh;
+		color:#F60;
+		font-weight:bold;
+		font-size:3.5vh;
+	}
+	.tablecontent{
+		background-color:#FFF;
+		height:10vh;
+		font-size:3.5vh;
+	}
+	#tablecontentmain{
+		background-color:#FFF;
+		height:15vh;
+		font-size:16vh;
+	}
+	#accordion2{
+		width:95vw;
+		background-color:#000;
+		position:fixed;
+		margin-top:12vh;
+	}
+}
+@media  (min-width: 400px) and (max-width: 799px) {
+	#buttons2{
+		background-color:#FFF;
+		display:none;
+	}
+	#accordion2{
+		width:60vw;
+		background-color:#000;
+		position:absolute;
+		margin-left:20vw;
+		margin-right:20vw;
+	}
+	.set{
+		width:14vh;
+	}
+	#table{
+		width:100%;
+		height:100%;
+		text-align:center;
+	}
+	#txt, #txtlcd, #txtlcd3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	txtlcdsmall, txtlcdsmall2, txtlcdsmall3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	#txtlcd2{
+		font-family: JuneBug;
+		color:#090;
+	}
+	#tablebar{
+		background-image:url(../table.png);
+		background-repeat: no-repeat;
+		background-size:cover;
+		height:8vh;
+		color:#F60;
+		font-weight:bold;
+		font-size:6vh;
+	}
+	.tablecontent{
+		background-color:#FFF;
+		height:12vh;
+		font-size:6vh;
+	}
+	#butt, #butt2, #butt3{
+		font-size:5vh;
+		width:25vw;
+	}
+	#tablecontentmain{
+		background-color:#FFF;
+		height:17vh;
+		font-size:15vh;
+	}
+	.statusbar{
+		background-color:rgba(255, 255, 255, 0.25);
+		width:10%;
+		height:95vh;
+		float:left;
+		text-align:center;
+		position: fixed;
+	}
+	.right{
+		margin-top:35vh;
+		
+	}
+	
+	}
+	
+	@media (min-width: 800px) {
+	#txt, #txtlcd, #txtlcd3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	txtlcdsmall, txtlcdsmall2, txtlcdsmall3{
+		font-family: JuneBug;
+		color:#666;
+	}
+	#txtlcd2{
+		font-family: JuneBug;
+		color:#090;
+	}
+	#table{
+		width:100%;
+		height:100%;
+		text-align:center;
+	}
+	#tablebar{
+		background-image:url(../table.png);
+		background-repeat: no-repeat;
+		background-size:cover;
+		height:6vh;
+		color:#F60;
+		font-weight:bold;
+		font-size:3.5vh;
+	}
+	.tablecontent{
+		background-color:#FFF;
+		height:10vh;
+		font-size:3.5vh;
+	}
+	#tablecontentmain{
+		background-color:#FFF;
+		height:15vh;
+		font-size:16vh;
+	}
+	#accordion2{
+		width:34vw;
+		margin-left:32vw;	
+		margin-top:12vh;
+		background-color:#000;
+		position:absolute;
+	}
+	.set{
+		width:4vw;
+		margin-top:1vh;
+	}
+	.statusbar{
+		background-color:rgba(255, 255, 255, 0.25);
+		width:100%;
+		float:left;
+		text-align:left;
+		position: relative;
+	}
+	.right,.left{
+		width:50%; 
+		position:absolute; 
+		background-color:rgba(255, 255, 255, 0.25);
+		height:10vh;
+	}
+	.right{
+		right:0;
+		text-align:right;
+		margin-left:20vw;
+	}
+	.left{
+		left:0;
+		text-align:left;
+	}
+	#buttons2{
+		background-color:#FFF;
+		display:none;
+	}
+}
+
+	

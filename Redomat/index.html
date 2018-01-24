@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Referada</title>
+</head>
+<style>
+
+@font-face { font-family: JuneBug; src: url('../digital.TTF'); } 
+#mar{float:left;
+		text-align:left;
+		position: relative;
+}
+body{
+		background:url("background.jpg") no-repeat fixed center;
+		background-size:cover;
+		text-align:center;
+		bgproperties: fixed;
+}
+#main{
+	width:100%;
+}
+#txt{
+	font-size:4vh;
+	position:inherit; 
+}
+.button {
+    background-color: #4CAF58;
+    border: none;
+    color: blue;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#txt2{
+	font-size:4vh;
+	position:relative;
+}
+.divleft{
+	background-color:#000;
+	margin-left:5vw;
+	margin-right:2.5vw;
+	margin-top:3vh;
+}
+.sal{
+	display:none;
+}
+.divright{
+	background-color:#000;
+	margin-left:2.5vw;
+	margin-right:5vw;
+	margin-top:3vh;
+}
+.divtext{
+	width:100%;
+	height:5vh;
+	background-color:#fff;
+	margin-bottom:3vh;
+	margin-top:3vh;
+}
+.tablebar{
+		background-image:url(table.png);
+		background-repeat: no-repeat;
+		background-size:cover;
+		height:6vh;
+		color:#F60;
+		font-weight:bold;
+		font-size:4.5vh;
+}
+.tablecontent{
+		background-color:#FFF;
+		height:33vh;
+		font-size:23vh;
+		font-family: JuneBug;
+}
+.notworking{
+	background:#666;
+	font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size:5vh;
+	color:#FFF;
+}
+</style>
+<body><img src="">
+<p><strong><font size="7" color="white">DOBRODOŠLI  </strong></font></P>
+<br><br><br>
+<a href="pregled/redomattv.html" alt="Smiley face" align="middle"><input type="button" class="button" value="Prikaz" name="Prikaz"/></a>
+<input type="button" class="button" value="Referada" name="Referada" onClick="popup_window();"/>
+<a href="uzmibroj/index.html"><input type="button" class="button" value="Uzmi Broj" name="Uzmi Broj"/></a>
+<p><strong><font size="7" color="tomato">REDOMAT  </strong></font></P>
+<p><font size="7" color="teal">Fakultet strojarstva i računarstva  </font></P>
+<script>
+ function popup_window()
+   {window.open("referada/index.php","Prijava - Referada",	"toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,directories=no,width=1000,height=500");
+   }
+  
+</script>
+</body>
+</html>

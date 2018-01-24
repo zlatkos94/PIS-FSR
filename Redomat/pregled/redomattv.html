@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>RedomatTv</title>
+	<link href="../jquery/jquery-ui.css" rel="stylesheet">
+	<script src="../jquery/external/jquery/jquery.js"></script>
+	<script src="../jquery/jquery-ui.js"></script>
+    <script src="clock.js"></script>
+    <script>
+	var beep = new Audio();
+	beep.src="beep.mp3";
+	function playBtnSound(){
+		beep.play();
+	}
+	</script>
+</head>
+<style>
+
+@font-face { font-family: JuneBug; src: url('../digital.TTF'); } 
+#mar{float:left;
+		text-align:left;
+		position: relative;
+}
+body{
+		background:url("../background.jpg") no-repeat fixed center;
+		background-size:cover;
+		text-align:center;
+		bgproperties: fixed;
+}
+#main{
+	width:100%;
+}
+#txt{
+	font-size:4vh;
+	position:inherit; 
+}
+#txt2{
+	font-size:4vh;
+	position:relative;
+}
+.divleft{
+	background-color:#000;
+	margin-left:5vw;
+	margin-right:2.5vw;
+	margin-top:3vh;
+}
+.sal{
+	display:none;
+}
+.divright{
+	background-color:#000;
+	margin-left:2.5vw;
+	margin-right:5vw;
+	margin-top:3vh;
+}
+.divtext{
+	width:100%;
+	height:5vh;
+	background-color:#fff;
+	margin-bottom:3vh;
+	margin-top:3vh;
+}
+.tablebar{
+		background-image:url(../table.png);
+		background-repeat: no-repeat;
+		background-size:cover;
+		height:6vh;
+		color:#F60;
+		font-weight:bold;
+		font-size:4.5vh;
+}
+.tablecontent{
+		background-color:#FFF;
+		height:33vh;
+		font-size:23vh;
+		font-family: JuneBug;
+}
+.notworking{
+	background:#666;
+	font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+	font-size:5vh;
+	color:#FFF;
+}
+</style>
+<body onload="startTime()">
+<table id="main">
+	<tr>
+    	<td><div class="divleft">
+        		<table width="100%">
+            		<tr>
+                		<td class="tablebar">Salter 1</td>
+                	</tr><tr>
+                    	<td class="tablecontent"><div class="sal" id="sal1">--</div>
+                        <div class="notworking" id="not1">NE RADI</div>
+                        </td>
+                	</tr>
+            	</table>
+           	</div></td>
+        <td><div class="divright">
+        		<table width="100%">
+            		<tr>
+                		<td class="tablebar">Salter 2</td>
+                	</tr><tr>
+                    	<td class="tablecontent"><div class="sal" id="sal2">--</div>
+                        <div class="notworking" id="not2">NE RADI</div>
+                        </td>
+                	</tr>
+            	</table>
+        </div></td>
+    </tr>
+    	<tr>
+    	<td><div class="divleft">
+        		<table width="100%">
+            		<tr>
+                		<td class="tablebar">Salter 3</td>
+                	</tr><tr>
+                    	<td class="tablecontent"><div class="sal" id="sal3">--</div>
+                        <div class="notworking" id="not3">NE RADI</div>
+                        </td>
+                	</tr>
+            	</table>
+        	</div></td>
+        <td><div class="divright">
+        		<table width="100%">
+            		<tr>
+                		<td class="tablebar">Salter 4</td>
+                	</tr><tr>
+                    	<td class="tablecontent"><div class="sal" id="sal4">--</div>
+                        <div class="notworking" id="not4">NE RADI</div>
+                        </td>
+                	</tr>
+            	</table>
+        	</div></td>
+    </tr>
+</table>
+<div class="divtext">
+	<marquee behavior="scroll" direction="left" scrollamount="1"><div id="txt">Slow scroll speed </div></marquee>
+</div>
+    
+<script>
+$(document).ready(function(e) {
+	
+	
+   getCurrentNumber();
+   startAJAXcalls();
+  
+ 
+});
+var broj=[];
+
+
+function getCurrentNumber(){
+		$.ajax({
+        	   	url: "JSONgetNumbers.php",
+				type:"POST",
+				success: function(rez){
+					var json=rez;
+					if(rez.salter1!=null){
+						$("#not1").css("display","none");
+						$("#sal1").fadeIn();
+						$("#sal1").empty();
+						if(broj[0]!=rez.salter1){
+							beep.play();
+						}
+						$("#sal1").append(rez.salter1);
+						broj[0]=rez.salter1;
+					}else{
+						$("#sal1").css("display","none");
+						$("#not1").fadeIn();
+					}
+					if(rez.salter2!=null){
+						$("#not2").css("display","none");
+						$("#sal2").fadeIn();
+						$("#sal2").empty();
+						if(broj[1]!=rez.salter2){
+							beep.play();
+						}
+						$("#sal2").append(rez.salter2);
+						broj[1]=rez.salter2;
+					}else{
+						$("#sal2").css("display","none");
+						$("#not2").fadeIn();
+					}
+					if(rez.salter3!=null){
+						$("#not3").css("display","none");
+						$("#sal3").fadeIn();
+						$("#sal3").empty();
+						if(broj[2]!=rez.salter3){
+							beep.play();
+						}
+						$("#sal3").append(rez.salter3);
+						broj[2]=rez.salter3;
+					}else{
+						$("#sal3").css("display","none");
+						$("#not3").fadeIn();
+					}
+					if(rez.salter4!=null){
+						$("#not4").css("display","none");
+						$("#sal4").fadeIn();
+						$("#sal4").empty();
+						if(broj[3]!=rez.salter4){
+							beep.play();
+						}
+						$("#sal4").append(rez.salter4);
+						broj[3]=rez.salter4;
+					}else{
+						$("#sal4").css("display","none");
+						$("#not4").fadeIn();
+					}
+				}
+		 });	
+	}
+
+function startAJAXcalls(){
+	setTimeout(function(){
+		getCurrentNumber();
+		startAJAXcalls();
+},5000);
+}
+</script>
+</body>
+</html>

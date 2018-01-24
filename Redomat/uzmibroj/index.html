@@ -1,0 +1,226 @@
+﻿<!doctype html>
+<html>
+<head>
+<link href="../jquery/jquery-ui.css" rel="stylesheet">
+<script src="../jquery/external/jquery/jquery.js"></script>
+<script src="../jquery/jquery-ui.js"></script>
+<script src="clock.js"></script>
+<meta charset="utf-8">
+<title>Prijava</title>
+	<style>
+	@font-face { font-family: JuneBug; src: url('../digital.TTF'); } 
+	
+	#main{
+		margin-left:4vw;
+		margin-top:6vh;
+	}
+	#alert{
+		display:none;	
+	}
+	body{
+		background-image:url(../background.jpg);
+		background-repeat: no-repeat;
+		background-size:cover;
+	}
+	
+	@media   (max-width: 399px){
+	#accordion{
+		width:90vw;
+		
+	}
+	#accordion2{
+		width:90vw;
+		
+	}
+	#table{
+		margin-top:2vh;
+		width:100%;
+		text-align:center;
+	}
+	a{
+		color:#F60;
+		font-weight:bold;
+		font-size:3vh;
+	}
+	.tablebar{
+		background-image:url(../table.png);
+		height:5vh;
+		background-repeat: no-repeat;
+		background-size:cover;
+		color:#F60;
+		font-weight:bold;
+		font-size:2.8vh;
+	}
+	#tablecontent{
+		background-color:#FFF;
+		font-size:5vh;
+	}
+	#map,#showhavenum,#shownum{
+		height:26.5vh;
+		font-size:2.2vh;
+	}
+
+}
+@media (min-width: 400px) {
+	#txt, #txtlcd, #txtlcd3{
+		font-family: JuneBug;
+		font-size:440%;
+		color:#666;
+	}
+	#txtlcd2{
+		font-family: JuneBug;
+		font-size:440%;
+		color:#090;
+	}
+	body{
+		font: 62.5% "Trebuchet MS", sans-serif;
+		
+	}
+	#accordion{
+		width:60vw;
+		float:left;
+		margin-right:1vw;
+		
+	}
+	#accordion2{
+		width:28vw;
+		float:left;
+	}
+	#table{
+		width:100%;
+		text-align:center;
+	}
+	a{
+		color:#F60;
+		font-weight:bold;
+		font-size:2vh;
+	}
+	.tablebar{
+		background-image:url(../table.png);
+		height:5vh;
+		background-repeat: no-repeat;
+		background-size:cover;
+		color:#F60;
+		font-weight:bold;
+		font-size:2vh;
+	}
+	#tablecontent{
+		background-color:#FFF;
+		font-size:2vh;
+	}
+	#map,#showhavenum,#shownum{
+		height:26.5vh;
+		font-size:2.2vh;
+	}
+	
+	
+}
+	
+	</style>
+</head>
+
+<body onload="startTime(),getCurrentNumber()">
+
+	<div class="ui-widget">
+		<div id="alert" class="ui-state-error ui-corner-all" style="padding: 0 .7em;">
+			<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+			<strong>Pogreška:</strong> Uneseni kod je pogrešan ili je polje oib-a ostalo prazno, pokušajte ponovo</p>
+		</div>
+	</div>
+    
+	<div id="main">
+		<div id="accordion">
+			<h3>Obavijest</h3>
+				<div id="map"><b>Redomat Unicredit banke u Mostaru 2017/18
+                    </b> <br><br> - Aplikacija za prijavu, molimo prijavite se za dobivanje pristupnog broja.<br><br> - Radno vrijeme evidencije 8:00-14:00</div>
+			<h3>Uvjeti korištenja</h3>
+				<div id="map">- Prijavite se odabirom opcije <b>"Uzmi broj"</b>. <br> <br> - Nakon uspješno unesenog obi-a i koda potvrde dobiva se pristupni broj.  <br><br> - Prlikom dolaska na šalter molimo pripremite osobnu na uvid.  <br> <br> - U slučaju poteškoća javite se adminu na broj <b>063-111-111 </b>ili mail <b>administrator@fsr.ba</b></div>
+			<h3 id="getnum">Uzmi broj</h3>
+				<div id="shownum"></div>
+    		<h3 id="havenum">Već imam broj</h3>
+				<div id="showhavenum"></div>
+		</div>
+
+	<div  id="accordion2">
+		<table align="center" id="table">
+			<tr>
+				<td class="tablebar" colspan="2">Vrijeme:</td>
+			</tr><tr>
+				<td id="tablecontent" colspan="2"><div id="txt"></div></td>
+			</tr><tr>
+				<td class="tablebar">Trenutni Broj:</td>
+				<td class="tablebar">Vaš Broj:</td>
+			</tr><tr>
+				<td id="tablecontent" width=50%><div id="txtlcd2">--</div></td>
+				<td id="tablecontent" width=50%><div id="txtlcd3">--</div></td>
+			</tr><tr>
+				<td class="tablebar" colspan="2">Procijenjeno vrijeme dolaska na red:</td>
+			</tr><tr>
+				<td id="tablecontent" colspan="2"><div id="txtlcd">--</div></td>
+            </tr><tr>
+				<td class="tablebar" id="refreshButton" colspan="2"><a href="#">>>Osvježi trenutni broj<<</a></td>
+			</tr>
+		</table>
+	</div>
+    
+    
+</div>
+
+
+<script>
+	$( "#accordion" ).accordion();
+	
+	$(document).ready(function(e) {
+		
+	
+		$("#refreshButton").click(function(){
+			alert("Trenutni broj osviježen");
+			getCurrentNumber();
+		})
+    	$("#getnum").click(function(){
+			refresh();
+		})
+		$("#havenum").click(function(){
+			refresh2();
+		})
+		
+		getCurrentNumber();
+		//setInterval(getCurrentNumber(), 60000);
+		
+	});
+
+	function refresh(){
+		$.ajax({
+        	   	url: "form.php",
+				success: function(rez){
+					$("#shownum").empty();
+					$("#shownum").append(rez);
+				}
+	 	});	
+	}
+	
+	function refresh2(){
+		$.ajax({
+        	   	url: "form2.php",
+				success: function(rez){
+					$("#showhavenum").empty();
+					$("#showhavenum").append(rez);
+				}
+	 	});	
+	}
+
+	function getCurrentNumber(){
+		$.ajax({
+        	   	url: "getCurrentNumber.php",
+				success: function(rez){
+					$("#txtlcd2").empty();
+					$("#txtlcd2").append(rez);
+				}
+		 });	
+	}
+	
+	
+
+</script>
+</body>
+</html>
